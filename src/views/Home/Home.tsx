@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 const Home = () => {
     const [isOpen, setisOpen] = useState(false)
-
+    const [position, setPosition] = useState({ x: 0, y: 0 });
     const onClick = () => {
         setisOpen(!isOpen)
     }

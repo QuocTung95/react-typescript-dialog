@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
 import { Resizable, ResizableBox } from 'react-resizable';
-import Draggable from 'react-draggable';
 import 'react-resizable/css/styles.css';
-import {DialogStyle} from './DialogStyle'
+import { DialogStyle } from './DialogStyle'
 
 
 interface Props {
@@ -15,30 +14,26 @@ interface Props {
     initialHeight?: number;
 }
 
-const Dialog: React.FC<Props> = ({ 
+const Dialog: React.FC<Props> = ({
     isOpen,
     handleOk = () => null,
     handleCancel = () => null,
     children = '',
-    initialWidth = 500,
-    initialHeight = 500
+    initialWidth = 900,
+    initialHeight = 700
 }) => {
 
     const [isModalOpen, setIsModalOpen] = useState(isOpen);
     const [width, setWidth] = React.useState(initialWidth);
     const [height, setHeight] = React.useState(initialHeight);
-    const [position, setPosition] = useState({ x: 0, y: 0 });
 
     useEffect(() => {
         setIsModalOpen(isOpen)
     }, [isOpen])
-    
 
-    const handleDrag = (e: any, { x, y }: any ) => {
-        setPosition({ x, y });
-      };
-    
-    const onResize = (event: any, {size}: any) => {
+
+
+    const onResize = (event: any, { size }: any) => {
         setWidth(size.width);
         setHeight(size.height);
     };
@@ -54,19 +49,22 @@ const Dialog: React.FC<Props> = ({
     };
 
     return (
-<Draggable handle=".handle" onDrag={handleDrag}>
-<DialogStyle
-                open={isModalOpen}
-                onOk={onHandleOk}
-                onCancel={onHandleCancel}
-                footer={null}
-            >
-                <ResizableBox className="box" onResize={onResize} width={width} height={height} draggableOpts={{ enableUserSelectHack: false }}>
-                {children}
-                </ResizableBox>
-                
-            </DialogStyle>
-</Draggable>
+        <>
+
+                <DialogStyle
+                    open={isModalOpen}
+                    onOk={onHandleOk}
+                    onCancel={onHandleCancel}
+                    footer={null}
+                    width={width}
+                >
+                    <ResizableBox className="box" onResize={onResize} width={width} height={height} draggableOpts={{ enableUserSelectHack: false }}>
+                        {children}
+                    </ResizableBox>
+
+                </DialogStyle>
+        </>
+
 
 
 
