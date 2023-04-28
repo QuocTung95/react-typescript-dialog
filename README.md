@@ -23,6 +23,8 @@ http://localhost:3000
  User sees loading state while waiting for the API.
  User sees an error message when there is a network error.
  Simple responsive.
+ Can resize dialog by click on right corner bottom
+
 
 * Tech stack
 
