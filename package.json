@@ -1,7 +1,7 @@
 {
-    "name": "initreacttypescript",
+    "name": "@initreacttypescriptok",
     "version": "0.1.0",
-    "private": true,
+    "bin": "./bin/index.js",
     "dependencies": {
         "@ant-design/icons": "^4.8.0",
         "@emotion/styled": "^11.10.5",
